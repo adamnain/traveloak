@@ -21,10 +21,7 @@ class _AwalState extends State<Awal> {
         ],
       ),
       body: ListView(
-        children: <Widget>[
-          Akun(),
-          Divider(),
-        ],
+        children: <Widget>[Akun(), Divider(), MenuUtama()],
       ),
     );
   }
@@ -55,18 +52,22 @@ class Akun extends StatelessWidget {
             RaisedButton.icon(
               icon: Icon(Icons.album),
               label: Text('365 Poin'),
-              onPressed: (){},
+              onPressed: () {},
               color: Colors.grey[200],
               elevation: 0.0,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0)),
             ),
-            Padding(padding: EdgeInsets.all(8.0),),
+            Padding(
+              padding: EdgeInsets.all(8.0),
+            ),
             RaisedButton(
               child: Text('Traveloak Pay'),
-              onPressed: (){},
+              onPressed: () {},
               color: Colors.grey[200],
               elevation: 0.0,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0)),
             )
           ],
         ),
@@ -74,3 +75,108 @@ class Akun extends StatelessWidget {
     );
   }
 }
+
+class MenuUtama extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return GridView.count(
+      shrinkWrap: true,
+      crossAxisCount: 5,
+      children: menuUtamaItem,
+    );
+  }
+}
+
+
+List<MenuUtamaItem> menuUtamaItem = [
+  MenuUtamaItem(
+    title: 'Tiket Pesawat',
+    icon: Icons.flight,
+    colorBox: Colors.blue,
+    iconColor: Colors.white,
+  ),
+  MenuUtamaItem(
+    title: 'Hotel',
+    icon: Icons.hotel,
+    colorBox: Colors.indigo,
+    iconColor: Colors.white,
+  ),
+  MenuUtamaItem(
+    title: 'Pesawat + Hotel',
+    icon: Icons.flight_land,
+    colorBox: Colors.purple,
+    iconColor: Colors.white,
+  ),
+  MenuUtamaItem(
+    title: 'Aktivitas & Rekreasi',
+    icon: Icons.card_travel,
+    colorBox: Colors.greenAccent,
+    iconColor: Colors.white,
+  ),
+  MenuUtamaItem(
+    title: 'Kuliner',
+    icon: Icons.fastfood,
+    colorBox: Colors.deepOrange,
+    iconColor: Colors.white,
+  ),
+  MenuUtamaItem(
+    title: 'Tiket Kereta',
+    icon: Icons.directions_railway,
+    colorBox: Colors.orange,
+    iconColor: Colors.white,
+  ),
+  MenuUtamaItem(
+    title: 'Tiket Bus & Travel',
+    icon: Icons.directions_bus,
+    colorBox: Colors.green,
+    iconColor: Colors.white,
+  ),
+  MenuUtamaItem(
+    title: 'Transportasi Bandara',
+    icon: Icons.local_car_wash,
+    colorBox: Colors.lightBlueAccent,
+    iconColor: Colors.white,
+  ),
+  MenuUtamaItem(
+    title: 'Rental Mobil',
+    icon: Icons.directions_car,
+    colorBox: Colors.blueAccent,
+    iconColor: Colors.white,
+  ),
+  MenuUtamaItem(
+    title: 'Semua Produk',
+    icon: Icons.more_horiz,
+    colorBox: Colors.grey,
+    iconColor: Colors.black,
+  ),
+];
+
+class MenuUtamaItem extends StatelessWidget {
+  MenuUtamaItem({this.title, this.icon, this.colorBox, this.iconColor});
+  final String title;
+  final IconData icon;
+  final Color colorBox, iconColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Container(
+          height: 50.0,
+          width: 50.0,
+          decoration: BoxDecoration(
+            color: colorBox,
+            shape: BoxShape.circle
+          ),
+          child: Icon(icon, color: iconColor,),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 5.0),
+          child: Text(title, style: TextStyle(fontSize: 12.0), textAlign: TextAlign.center,),
+        )
+      ],
+    );
+  }
+}
+
+
